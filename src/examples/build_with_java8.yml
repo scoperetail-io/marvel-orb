@@ -3,18 +3,18 @@ description: >
 usage:
   version: 2.1
   orbs:
-    marvel: scoperetail/marvel@1.0.0
+    marvel: scoperetail/marvel@x.y.z
 
   workflows:
     build-and-test-java:
       jobs:
-        - marvel/build-and-deploy:
+        - marvel/maven-deploy:
             context: OSSRH
             executor: marvel/java8
             filters:
               branches:
                 ignore: master
-        - marvel/build-and-release:
+        - marvel/maven-release:
             context: OSSRH
             executor: marvel/java8
             filters:

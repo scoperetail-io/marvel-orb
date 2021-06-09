@@ -1,0 +1,25 @@
+description: |
+  Checkout, build, release and publish docker image with a release profile (optional).
+  It requires GITHUB_USER_EMAIL and GITHUB_USER_NAME variables in organization context.
+
+executor: <<parameters.executor>>
+
+parameters:
+  executor:
+    description: The name of custom executor to use
+    type: executor
+    default: java11
+
+steps:
+  - checkout
+  - import_gpg_key
+  - with_cache:
+      steps:
+        - build_and_release
+        - docker-publish
+        - slack/notify:
+            event: fail
+            template: basic_fail_1
+        - slack/notify:
+            event: pass
+            template: basic_success_1
