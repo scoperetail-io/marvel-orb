@@ -1,0 +1,24 @@
+description: >
+  Build with Java8
+usage:
+  version: 2.1
+  orbs:
+    marvel: scoperetail/marvel@1.0.0
+
+  workflows:
+    build-and-test-java:
+      jobs:
+        - marvel/build-and-deploy:
+            context: OSSRH
+            executor: marvel/java8
+            filters:
+              branches:
+                ignore: master
+        - marvel/build-and-release:
+            context: OSSRH
+            executor: marvel/java8
+            filters:
+              branches:
+                only:
+                  - master
+                  - /HOTFIX-.*/
