@@ -13,6 +13,6 @@ steps:
   - with_cache:
       steps:
         - run:
-            name: Verify
+            name: Build and Deploy
             command: |
-              mvn -s .circleci/.maven.xml clean verify
+              mvn -s .circleci/.maven.xml clean deploy

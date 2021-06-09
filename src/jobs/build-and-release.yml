@@ -14,7 +14,7 @@ steps:
   - with_cache:
       steps:
         - run:
-            name: Release
+            name: Build and Release
             command: |
               git config --global user.email "tushar.agrawal@scoperetail.com"
               git config --global user.name "scoperetail"
