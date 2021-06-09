@@ -1,5 +1,7 @@
 description: |
-  Checkout, build, test, and upload test results for a Maven project.
+  Checkout, build, and release with a release profile (optional).
+  It requires GITHUB_USER_EMAIL and GITHUB_USER_NAME variables in organization context.
+
 executor: <<parameters.executor>>
 
 parameters:
@@ -16,6 +18,18 @@ steps:
         - run:
             name: Build and Release
             command: |
-              git config --global user.email "tushar.agrawal@scoperetail.com"
-              git config --global user.name "scoperetail"
+              git config --global user.email $GITHUB_USER_EMAIL
+              git config --global user.name $GITHUB_USER_NAME
               mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare release:perform -Prelease
+              RELEASE="Yes"
+              ADDITIONAL_PARAMS="--set-upstream origin $CIRCLE_BRANCH"
+              mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare -Prelease
+              mvn help:evaluate -Dexpression=project.name -q -DforceStdout > app.txt
+              ls target/*.jar|sed 's/.*-\([0-9][0-9.]*[^\/]*\)\.jar$/\1/' > version.txt
+              mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:perform -Prelease
+        - slack/notify:
+            event: fail
+            template: basic_fail_1
+        - slack/notify:
+            event: pass
+            template: basic_success_1
