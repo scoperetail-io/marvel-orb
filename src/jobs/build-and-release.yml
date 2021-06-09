@@ -1,6 +1,7 @@
 description: |
   Checkout, build, and release with a release profile (optional).
   It requires GITHUB_USER_EMAIL and GITHUB_USER_NAME variables in organization context.
+
 executor: <<parameters.executor>>
 
 parameters:

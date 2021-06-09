@@ -9,6 +9,7 @@ usage:
     build-and-test-java:
       jobs:
         - marvel/build-and-deploy:
+            context: OSSRH
             executor: marvel/java8
             filters:
               branches:
