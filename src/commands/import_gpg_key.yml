@@ -1,0 +1,5 @@
+description: "Import GPG Key needed for signing"
+steps:
+  - run:
+      name: import GPG key
+      command: echo -e "$GPG_KEY" | gpg --import

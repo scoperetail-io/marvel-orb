@@ -1,0 +1,22 @@
+description: >
+  Build with Java11
+usage:
+  version: 2.1
+  orbs:
+    marvel: scoperetail/marvel@1.0.0
+
+  workflows:
+    build-and-test-java:
+      jobs:
+        - marvel/build-and-deploy:
+            context: OSSRH
+            filters:
+              branches:
+                ignore: master
+        - marvel/build-and-release:
+            context: OSSRH
+            filters:
+              branches:
+                only:
+                  - master
+                  - /HOTFIX-.*/
