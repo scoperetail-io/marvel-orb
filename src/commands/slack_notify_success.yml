@@ -45,14 +45,6 @@ steps:
         						"text": "View Job"
         					},
         					"url": "${CIRCLE_BUILD_URL}"
-        				},
-        				{
-        					"type": "button",
-        					"text": {
-        						"type": "plain_text",
-        						"text": "View Repo"
-        					},
-        					"url": "${CIRCLE_REPOSITORY_URL}"
         				}
         			]
         		}
