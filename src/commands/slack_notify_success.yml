@@ -4,49 +4,13 @@ steps:
       event: always
       custom: |
         {
-        	"blocks": [
-        		{
-        			"type": "header",
-        			"text": {
-        				"type": "plain_text",
-        				"text": "Job Succeeded. :white_check_mark:",
-        				"emoji": true
-        			}
-        		},
-        		{
-        			"type": "section",
-        			"fields": [
-        				{
-        					"type": "mrkdwn",
-        					"text": "$CIRCLE_PROJECT_REPONAME | $CIRCLE_BRANCH"
-        				},
-        				{
-        					"type": "mrkdwn",
-        					"text": "*Author*:\n $CIRCLE_USERNAME"
-        				},
-        				{
-        					"type": "mrkdwn",
-        					"text": "*PRs*:\n $CIRCLE_PULL_REQUESTS"
-        				}
-        			],
-        			"accessory": {
-        				"type": "image",
-        				"image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
-        				"alt_text": "CircleCI logo"
-        			}
-        		},
-        		{
-        			"type": "actions",
-        			"elements": [
-        				{
-        					"type": "button",
-        					"text": {
-        						"type": "plain_text",
-        						"text": "View Job"
-        					},
-        					"url": "${CIRCLE_BUILD_URL}"
-        				}
-        			]
-        		}
-        	]
+          "blocks": [
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "Success :white_check_mark: | <${CIRCLE_REPOSITORY_URL}|${CIRCLE_PROJECT_REPONAME}> | <${CIRCLE_BUILD_URL}|${CIRCLE_JOB}> | ${CIRCLE_USERNAME}"
+              }
+            }
+          ]
         }

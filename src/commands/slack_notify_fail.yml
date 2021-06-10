@@ -6,55 +6,11 @@ steps:
         {
         	"blocks": [
         		{
-        			"type": "header",
-        			"text": {
-        				"type": "plain_text",
-        				"text": "Job Failed. :red_circle:",
-        				"emoji": true
-        			}
-        		},
-        		{
         			"type": "section",
-        			"fields": [
-        				{
-        					"type": "mrkdwn",
-        					"text": "$CIRCLE_PROJECT_REPONAME | $CIRCLE_BRANCH"
-        				},
-        				{
-        					"type": "mrkdwn",
-        					"text": "*Author*:\n $CIRCLE_USERNAME"
-        				},
-        				{
-        					"type": "mrkdwn",
-        					"text": "*PRs*:\n $CIRCLE_PULL_REQUESTS"
-        				}
-        			],
-        			"accessory": {
-        				"type": "image",
-        				"image_url": "https://assets.brandfolder.com/otz5mn-bw4j2w-6jzqo8/original/circle-logo-badge-black.png",
-        				"alt_text": "CircleCI logo"
+        			"text": {
+        				"type": "mrkdwn",
+        				"text": "*Failed* :red_circle: | <${CIRCLE_REPOSITORY_URL}|${CIRCLE_PROJECT_REPONAME}> | <${CIRCLE_BUILD_URL}|${CIRCLE_JOB}> | ${CIRCLE_USERNAME}"
         			}
-        		},
-        		{
-        			"type": "actions",
-        			"elements": [
-        				{
-        					"type": "button",
-        					"text": {
-        						"type": "plain_text",
-        						"text": "View Job"
-        					},
-        					"url": "${CIRCLE_BUILD_URL}"
-        				},
-        				{
-        					"type": "button",
-        					"text": {
-        						"type": "plain_text",
-        						"text": "View Repo"
-        					},
-        					"url": "${CIRCLE_REPOSITORY_URL}"
-        				}
-        			]
         		}
         	]
         }
