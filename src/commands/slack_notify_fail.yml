@@ -1,7 +1,7 @@
 description: "Slack Notify Failure"
 steps:
   - slack/notify:
-      event: always
+      event: fail
       custom: |
         {
           "blocks": [
@@ -9,7 +9,7 @@ steps:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "<${CIRCLE_BUILD_URL}|FAIL>  :white_check_mark: | ${CIRCLE_PROJECT_REPONAME} | ${CIRCLE_USERNAME}"
+                "text": "<${CIRCLE_BUILD_URL}|FAIL>  :red_circle: | ${CIRCLE_PROJECT_REPONAME} | ${CIRCLE_USERNAME}"
               }
             }
           ]

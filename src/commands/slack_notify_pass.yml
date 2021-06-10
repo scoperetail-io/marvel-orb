@@ -1,7 +1,7 @@
 description: "Slack Notify Success"
 steps:
   - slack/notify:
-      event: always
+      event: pass
       custom: |
         {
           "blocks": [

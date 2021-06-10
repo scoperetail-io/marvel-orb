@@ -16,9 +16,4 @@ steps:
   - with_cache:
       steps:
         - build_and_release
-        - slack/notify:
-            event: fail
-            template: basic_fail_1
-        - slack/notify:
-            event: pass
-            template: basic_success_1
+        - slack_notify_fail

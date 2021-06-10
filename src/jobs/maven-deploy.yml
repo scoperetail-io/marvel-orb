@@ -16,5 +16,5 @@ steps:
             name: Build and Deploy
             command: |
               mvn -s .circleci/.maven.xml clean deploy
-        - slack_notify_success
+        - slack_notify_fail
 
