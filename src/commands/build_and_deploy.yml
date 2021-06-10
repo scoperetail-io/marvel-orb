@@ -4,4 +4,4 @@ steps:
       name: Build and Release
       command: |
         mvn -s .circleci/.maven.xml --offline clean install
-        mvn deploy
+        mvn -s .circleci/.maven.xml deploy
