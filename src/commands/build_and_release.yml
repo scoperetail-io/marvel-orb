@@ -8,7 +8,7 @@ steps:
         mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare release:perform -Prelease
         RELEASE="Yes"
         ADDITIONAL_PARAMS="--set-upstream origin $CIRCLE_BRANCH"
-        mvn -s .circleci/.maven.xml -o -Darguments="-DskipTests" -B release:prepare -Prelease
+        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare -Prelease
         mvn help:evaluate -Dexpression=project.name -q -DforceStdout > app.txt
         ls target/*.jar|sed 's/.*-\([0-9][0-9.]*[^\/]*\)\.jar$/\1/' > version.txt
-        mvn -s .circleci/.maven.xml -o -Darguments="-DskipTests" -B release:perform -Prelease
+        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:perform -Prelease

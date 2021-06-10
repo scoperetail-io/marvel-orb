@@ -15,7 +15,7 @@ steps:
         - run:
             name: Build and Deploy
             command: |
-              mvn -s .circleci/.maven.xml -o clean deploy
+              mvn -s .circleci/.maven.xml clean deploy
         - slack/notify:
             event: fail
             template: basic_fail_1
