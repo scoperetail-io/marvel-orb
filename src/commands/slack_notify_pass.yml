@@ -1,0 +1,16 @@
+description: "Slack Notify Success"
+steps:
+  - slack/notify:
+      event: pass
+      custom: |
+        {
+          "blocks": [
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "<${CIRCLE_BUILD_URL}|PASS>  :white_check_mark: | ${CIRCLE_PROJECT_REPONAME} | ${CIRCLE_USERNAME}"
+              }
+            }
+          ]
+        }
