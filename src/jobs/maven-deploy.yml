@@ -12,10 +12,7 @@ steps:
   - checkout
   - with_cache:
       steps:
-        - run:
-            name: Build and Deploy
-            command: |
-              mvn -s .circleci/.maven.xml --offline clean deploy
+        - build_and_deploy
         - slack/notify:
             event: fail
             template: basic_fail_1
