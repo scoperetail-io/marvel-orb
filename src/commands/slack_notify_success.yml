@@ -9,7 +9,7 @@ steps:
               "type": "section",
               "text": {
                 "type": "mrkdwn",
-                "text": "Success :white_check_mark: | <${CIRCLE_REPOSITORY_URL}|${CIRCLE_PROJECT_REPONAME}> | <${CIRCLE_BUILD_URL}|${CIRCLE_JOB}> | ${CIRCLE_USERNAME}"
+                "text": "<${CIRCLE_BUILD_URL}|PASS>  :white_check_mark: | ${CIRCLE_PROJECT_REPONAME} | ${CIRCLE_USERNAME}"
               }
             }
           ]

@@ -1,16 +1,16 @@
-description: "Slack Notify Success"
+description: "Slack Notify Failure"
 steps:
   - slack/notify:
       event: always
       custom: |
         {
-        	"blocks": [
-        		{
-        			"type": "section",
-        			"text": {
-        				"type": "mrkdwn",
-        				"text": "*Failed* :red_circle: | <${CIRCLE_REPOSITORY_URL}|${CIRCLE_PROJECT_REPONAME}> | <${CIRCLE_BUILD_URL}|${CIRCLE_JOB}> | ${CIRCLE_USERNAME}"
-        			}
-        		}
-        	]
+          "blocks": [
+            {
+              "type": "section",
+              "text": {
+                "type": "mrkdwn",
+                "text": "<${CIRCLE_BUILD_URL}|FAIL>  :white_check_mark: | ${CIRCLE_PROJECT_REPONAME} | ${CIRCLE_USERNAME}"
+              }
+            }
+          ]
         }
