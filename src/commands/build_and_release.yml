@@ -5,7 +5,6 @@ steps:
       command: |
         git config --global user.email $GITHUB_USER_EMAIL
         git config --global user.name $GITHUB_USER_NAME
-        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare release:perform -Prelease
         RELEASE="Yes"
         ADDITIONAL_PARAMS="--set-upstream origin $CIRCLE_BRANCH"
         mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare -Prelease
