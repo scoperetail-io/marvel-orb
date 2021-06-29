@@ -24,27 +24,7 @@ CMD ["/bin/sh", "-c", "java -cp /app -Dspring.profiles.active=\${SPRING_PROFILE_
 EOF
 echo "Done"
 }
-###################UI###########################################
-write_dockerfile_ui(){
-echo "NOT IMPLEMENTED JET"
-exit 1
-}
 
 #################INIT###########################################
 echo "INIT writing dockerfile"
-case $TYPE in
-jar)
-	write_dockerfile_jar 
-	;;
-
-ui)
-	write_dockerfile_ui 
- 	;;
-
-*)
-	echo "Input parameter not set"
-	echo "Valid options:"
-	echo "dockerfile-writer.sh [jar|ui] "
-	exit 1
-  ;;
-esac
+write_dockerfile_jar 

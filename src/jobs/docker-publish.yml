@@ -16,6 +16,6 @@ steps:
   - with_cache:
       steps:
         - build_and_release
-        - write_docker_file
+        - write_dockerfile_jar
         - docker-publish
         - slack_notify_fail
