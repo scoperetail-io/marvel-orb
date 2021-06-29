@@ -9,6 +9,6 @@ parameters:
 steps:
   - run:
       environment:
-        TYPE: \<<parameters.docker_type>
+        TYPE: <<parameters.docker_type>
       name: Writting file type <parameters.docker_type>
       command: <<include(scripts/dockerfile-writer.sh)>>
