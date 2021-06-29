@@ -9,4 +9,4 @@ steps:
         ADDITIONAL_PARAMS="--set-upstream origin $CIRCLE_BRANCH"
         mvn help:evaluate -Dexpression=project.name -q -DforceStdout > app.txt
         mvn help:evaluate -Dexpression=project.version -q -DforceStdout | sed  s/-SNAPSHOT//g > version.txt;
-        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:clean release:prepare release:perform release:perform  -Prelease
+        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare release:perform  -Prelease
