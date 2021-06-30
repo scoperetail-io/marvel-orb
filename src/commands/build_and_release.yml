@@ -12,5 +12,5 @@ steps:
         echo $APP_VERSION > version.txt;
         echo $APP_NAME > app.txt
         mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare  -Prelease
-        mv target/${APP_NAME}-${APP_VERSION}.jar ~/app.jar
+        cp target/${APP_NAME}-${APP_VERSION}.jar app.jar
         mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:perform  -Prelease
