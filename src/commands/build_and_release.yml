@@ -7,9 +7,10 @@ steps:
         git config --global user.name $GITHUB_USER_NAME
         RELEASE="Yes"
         ADDITIONAL_PARAMS="--set-upstream origin $CIRCLE_BRANCH"
-        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare -Prelease
-        mvn help:evaluate -Dexpression=project.name -q -DforceStdout > app.txt
-        if [ -f "target/*.jar" ]; then
-          ls target/*.jar|sed 's/.*-\([0-9][0-9.]*[^\/]*\)\.jar$/\1/' > version.txt;
-        fi
-        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:perform -Prelease
+        APP_NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout )
+        APP_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | sed  s/-SNAPSHOT//g )
+        echo $APP_VERSION > version.txt;
+        echo $APP_NAME > app.txt
+        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare  -Prelease
+        cp target/${APP_NAME}-${APP_VERSION}.jar app.jar
+        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:perform  -Prelease
