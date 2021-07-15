@@ -1,6 +1,6 @@
 #!/bin/bash 
 ##CONFIG
-path="~/project/src/main/resources"
+path="$HOME/project/src/main/resources"
 fileName="layers.xml"
 ###################JAR###########################################
 write_file(){

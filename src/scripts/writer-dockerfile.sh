@@ -30,3 +30,4 @@ echo "Done"
 #################INIT###########################################
 echo "INIT writing  ${path}/${fileName} "
 write_file 
+
