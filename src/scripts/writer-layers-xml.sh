@@ -40,4 +40,3 @@ echo "Done"
 echo "INIT writing  ${path}/${fileName} "
 write_file 
 
-S
