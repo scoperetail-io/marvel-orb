@@ -1,7 +1,7 @@
 #!/bin/bash 
 ##CONFIG
-path=~
-fileName=Dockerfile
+path="~"
+fileName="Dockerfile"
 ###################JAR###########################################
 write_file(){
 cat > $path/$fileName <<EOF
