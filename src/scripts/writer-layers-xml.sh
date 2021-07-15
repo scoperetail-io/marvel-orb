@@ -4,7 +4,7 @@ path="$HOME/project/src/main/resources"
 fileName="layers.xml"
 ###################JAR###########################################
 write_file(){
-cat > $path/$fileName <<EOF
+cat > "$path/$fileName" <<EOF
 <layers xmlns="http://www.springframework.org/schema/boot/layers"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.springframework.org/schema/boot/layers

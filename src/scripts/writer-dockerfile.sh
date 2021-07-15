@@ -4,7 +4,7 @@ path="~"
 fileName="Dockerfile"
 ###################JAR###########################################
 write_file(){
-cat > $path/$fileName <<EOF
+cat > "$path/$fileName" <<EOF
 #This file was writted by marvelorb in dockerfile-writer.sh
 # add the fat jar file to the base image:
 FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine as builder
