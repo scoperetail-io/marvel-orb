@@ -10,6 +10,7 @@ cat > "$path/$fileName" <<EOF
 FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine as builder
 COPY app.jar application.jar
 # extract the layers of the artifact:
+RUN mkdir dependencies snapshot-dependencies internal-dependencies spring-boot-loader application
 RUN java -Djarmode=layertools -jar application.jar extract
 # copy the extracted folders to add the corresponding Docker layers
 FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine
