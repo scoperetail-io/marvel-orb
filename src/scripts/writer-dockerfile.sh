@@ -1,6 +1,6 @@
 #!/bin/bash 
 ##CONFIG
-path="~"
+path="$HOME"
 fileName="Dockerfile"
 ###################JAR###########################################
 write_file(){
