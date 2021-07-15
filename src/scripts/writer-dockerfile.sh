@@ -1,7 +1,10 @@
 #!/bin/bash 
+##CONFIG
+path=~
+fileName=Dockerfile
 ###################JAR###########################################
-write_dockerfile_jar(){
-cat >~/Dockerfile <<EOF
+write_file(){
+cat > $path/$fileName <<EOF
 #This file was writted by marvelorb in dockerfile-writer.sh
 # add the fat jar file to the base image:
 FROM adoptopenjdk/openjdk11:jdk-11.0.11_9-alpine as builder
@@ -19,11 +22,11 @@ COPY --from=builder application/ /app
 RUN chown -R fusion:fusion /app && chmod -R 777 /app
 RUN chown -R fusion:fusion /tmp/fusion && chmod -R 777 /tmp/fusion
 # ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
-CMD ["/bin/sh", "-c", "java -cp /app -Dspring.profiles.active=\${SPRING_PROFILE_ACTIVE} org.springframework.boot.loader.JarLauncher \${JAVA_OPTS}"]
+CMD ["/bin/sh", "-c", "java -cp /app org.springframework.boot.loader.JarLauncher \${JAVA_OPTS}"]
 EOF
 echo "Done"
 }
 
 #################INIT###########################################
-echo "INIT writing dockerfile"
-write_dockerfile_jar 
+echo "INIT writing  ${path}/${fileName} "
+write_file 

@@ -15,7 +15,7 @@ steps:
   - import_gpg_key
   - with_cache:
       steps:
-        - build_and_release
         - write_dockerfile_jar
+        - build_and_release_spring_docker
         - docker-publish
         - slack_notify_fail

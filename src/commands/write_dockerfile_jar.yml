@@ -1,8 +1,10 @@
-# commands/greet.yml
 description: >
-  This command write the Dockerfile.
+  This command write common files to the project.
 
 steps:
   - run:
-      name: Writting file type jar
-      command: <<include(scripts/dockerfile-writer-jar.sh)>>
+      name: Writting file DockerFile
+      command: <<include(scripts/writer-dockerfile.sh)>>
+  - run:
+      name: Writting file layers.xml
+      command: <<include(scripts/writer-layers-xml.sh)>>
