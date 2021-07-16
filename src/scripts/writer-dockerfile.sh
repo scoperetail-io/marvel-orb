@@ -23,7 +23,13 @@ COPY --from=builder application/ /app
 RUN chown -R fusion:fusion /app && chmod -R 777 /app
 RUN chown -R fusion:fusion /tmp/fusion && chmod -R 777 /tmp/fusion
 # ENTRYPOINT ["java", "org.springframework.boot.loader.JarLauncher"]
-CMD ["/bin/sh", "-c", "java -cp /app org.springframework.boot.loader.JarLauncher \${JAVA_OPTS}"]
+#CMD ["/bin/sh", "-c", "java -cp /app org.springframework.boot.loader.JarLauncher \${JAVA_OPTS}"]
+##TEPORARY ADDED the jar
+RUN mkdir /home/tomcat 
+COPY app.jar /home/tomcat/app.jar
+RUN chown fusion:fusion /home/tomcat -R 
+USER fusion
+ENTRYPOINT java -jar  /home/tomcat/app.jar
 EOF
 echo "Done"
 }
