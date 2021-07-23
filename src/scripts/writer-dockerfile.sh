@@ -26,7 +26,8 @@ COPY --from=builder spring-boot-loader/ /home/tomcat
 COPY --from=builder application/ /home/tomcat
 RUN chown -R scope:scope /home/tomcat && chmod -R 777 /home/tomcat && ls -la /home/tomcat
 USER scope
-ENTRYPOINT "java -cp /home/tomcat org.springframework.boot.loader.JarLauncher \${JAVA_OPTS}"
+ENTRYPOINT ["/bin/sh", "-c", "java -cp /home/tomcat org.springframework.boot.loader.JarLauncher \${JAVA_OPTS}"]
+
 EOF
 echo "Done"
 }
