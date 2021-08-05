@@ -7,4 +7,4 @@ steps:
         git config --global user.name $GITHUB_USER_NAME
         RELEASE="Yes"
         ADDITIONAL_PARAMS="--set-upstream origin $CIRCLE_BRANCH"
-        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare release:perform
+        mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare release:perform -Prelease
