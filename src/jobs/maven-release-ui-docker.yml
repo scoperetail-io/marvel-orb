@@ -16,5 +16,5 @@ steps:
   - with_cache:
       steps:
         - build_and_release_spring_docker
-        - docker-publish
+        - docker-publish-in-project
         - slack_notify_fail

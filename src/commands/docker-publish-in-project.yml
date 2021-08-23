@@ -1,0 +1,15 @@
+description: "Docker Build & Publish"
+steps:
+  - setup_remote_docker:
+      version: 20.10.2
+      docker_layer_caching: true
+
+  - run:
+      name: "Docker Build & Publish"
+      command: |
+        APP_VERSION=$(cat version.txt)
+        APP_NAME=$(cat app.txt)
+        echo "APP_NAME = $APP_NAME , APP_VERSION = $APP_VERSION"
+        echo $DOCKER_PASS | docker login $DOCKER_REGISTRY -u $DOCKER_USER --password-stdin
+        docker build -f Dockerfile -t $DOCKER_REGISTRY/$APP_NAME:$APP_VERSION .
+        docker push $DOCKER_REGISTRY/$APP_NAME:$APP_VERSION
