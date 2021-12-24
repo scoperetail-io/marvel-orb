@@ -42,4 +42,5 @@ echo "INIT writing  ${path}/${fileName} "
 write_file 
 path="$HOME/project/target/checkout/src/main/resources/"
 echo "INIT writing  ${path}/${fileName} "
-write_file 
+write_file
+
