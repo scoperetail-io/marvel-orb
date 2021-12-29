@@ -1,0 +1,24 @@
+description: >
+  Build with Java17
+usage:
+  version: 2.1
+  orbs:
+    marvel: scoperetail/marvel@x.y.z
+
+  workflows:
+    build-and-test-java:
+      jobs:
+        - marvel/maven-deploy:
+            context: OSSRH
+            executor: marvel/java17
+            filters:
+              branches:
+                ignore: master
+        - marvel/maven-release:
+            context: OSSRH
+            executor: marvel/java17
+            filters:
+              branches:
+                only:
+                  - master
+                  - /HOTFIX-.*/
