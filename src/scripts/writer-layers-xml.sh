@@ -1,6 +1,6 @@
 #!/bin/bash 
 ##CONFIG
-path="$HOME/project/src/main/resources"
+
 fileName="layers.xml"
 ###################JAR###########################################
 write_file(){
@@ -37,6 +37,6 @@ echo "Done"
 }
 
 #################INIT###########################################
+path="$HOME/project/src/main/resources"
 echo "INIT writing  ${path}/${fileName} "
-write_file 
-
+write_file
