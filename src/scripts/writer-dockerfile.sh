@@ -2,6 +2,7 @@
 ##CONFIG
 path="$HOME"
 fileName="Dockerfile"
+
 ###################JAR###########################################
 write_file(){
 cat > "$path/$fileName" <<EOF
