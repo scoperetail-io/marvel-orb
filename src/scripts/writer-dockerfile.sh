@@ -8,7 +8,7 @@ cat > "$path/$fileName" <<EOF
 #This file was writted by marvelorb in dockerfile-writer.sh
 # add the fat jar file to the base image:
 
-FROM adoptopenjdk/openjdk11:x86_64-alpine-jre-11.0.13_8 as builder
+FROM openjdk:11.0.14.1-jre-slim-buster as builder
 COPY app.jar application.jar
 
 # extract the layers of the artifact:
@@ -16,7 +16,7 @@ RUN mkdir dependencies snapshot-dependencies internal-dependencies spring-boot-l
 RUN java -Djarmode=layertools -jar application.jar extract
 
 # copy the extracted folders to add the corresponding Docker layers
-FROM adoptopenjdk/openjdk11:x86_64-alpine-jre-11.0.13_8
+FROM openjdk:11.0.14.1-jre-slim-buster
 RUN mkdir -p /home/tomcat  && addgroup -S scope && adduser -S scope -G scope
 
 COPY --from=builder dependencies/ /home/tomcat
