@@ -18,7 +18,7 @@ RUN java -Djarmode=layertools -jar application.jar extract
 
 # copy the extracted folders to add the corresponding Docker layers
 FROM openjdk:11.0.14.1-jre-slim-buster
-RUN mkdir -p /home/tomcat  && addgroup -S scope && adduser -S scope -G scope
+RUN mkdir -p /home/tomcat  && addgroup scope && adduser scope scope
 
 COPY --from=builder dependencies/ /home/tomcat
 COPY --from=builder snapshot-dependencies/ /home/tomcat
