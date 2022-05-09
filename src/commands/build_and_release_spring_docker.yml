@@ -14,3 +14,5 @@ steps:
         mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:prepare  -Prelease-spring,release
         cp target/${APP_NAME}-${APP_VERSION}.jar app.jar
         mvn -s .circleci/.maven.xml -Darguments="-DskipTests" -B release:perform  -Prelease-spring,release
+        mvn dependency:get -Dartifact=com.scoperetail.common:commons-dependency-checker:LATEST -Ddest=./dependency.jar -s .circleci/.maven.xml
+

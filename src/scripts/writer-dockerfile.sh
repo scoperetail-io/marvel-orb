@@ -18,8 +18,11 @@ RUN java -Djarmode=layertools -jar application.jar extract
 
 # copy the extracted folders to add the corresponding Docker layers
 FROM openjdk:11.0.14.1-jre-slim-buster
-RUN mkdir -p /home/tomcat  && addgroup scope && useradd scope -g scope
+apt-get update
+apt-get dist-upgrade -y
+RUN mkdir -p /home/tomcat/dp  && addgroup scope && useradd scope -g scope
 
+COPY dependency.jar /home/tomcat/dp/
 
 COPY --from=builder dependencies/ /home/tomcat
 COPY --from=builder snapshot-dependencies/ /home/tomcat
@@ -28,7 +31,7 @@ COPY --from=builder spring-boot-loader/ /home/tomcat
 COPY --from=builder application/ /home/tomcat
 RUN chown -R scope:scope /home/tomcat && chmod -R 777 /home/tomcat && ls -la /home/tomcat
 USER scope
-ENTRYPOINT ["/bin/sh", "-c", "java \${JAVA_APP_OPTS} -cp /home/tomcat org.springframework.boot.loader.JarLauncher "]
+ENTRYPOINT ["/bin/sh", "-c", "java -jar /home/tomcat/dp/dependency.jar && java \${JAVA_APP_OPTS} -cp /home/tomcat org.springframework.boot.loader.JarLauncher "]
 
 EOF
 echo "Done"
