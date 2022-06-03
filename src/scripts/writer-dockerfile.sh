@@ -17,6 +17,7 @@ RUN mkdir dependencies snapshot-dependencies internal-dependencies spring-boot-l
 RUN java -Djarmode=layertools -jar application.jar extract
 
 # copy the extracted folders to add the corresponding Docker layers
+
 FROM openjdk:11.0.15.1-jre-slim-buster
 
 RUN apt-get update -y
