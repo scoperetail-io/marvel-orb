@@ -9,7 +9,7 @@ cat > "$path/$fileName" <<EOF
 #This file was writted by marvelorb in dockerfile-writer.sh
 # add the fat jar file to the base image:
 
-FROM openjdk:11.0.15.1-jre-slim-buster as builder
+FROM openjdk:11.0.15-slim-buster as builder
 COPY app.jar application.jar
 
 # extract the layers of the artifact:
@@ -18,7 +18,7 @@ RUN java -Djarmode=layertools -jar application.jar extract
 
 # copy the extracted folders to add the corresponding Docker layers
 
-FROM openjdk:11.0.15.1-jre-slim-buster
+FROM openjdk:11.0.15-slim-buster
 
 RUN apt-get update -y
 RUN apt-get dist-upgrade -y
