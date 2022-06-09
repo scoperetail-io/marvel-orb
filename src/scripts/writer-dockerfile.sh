@@ -22,7 +22,7 @@ FROM openjdk:11.0.15-slim-buster
 
 RUN apt-get update -y
 RUN apt-get dist-upgrade -y
-RUN apt-get install libfreetype6 -y
+RUN apt-get install -y libfreetype6 ttf-dejavu 
 
 RUN mkdir -p /home/tomcat/dp  && addgroup scope && useradd scope -g scope
 
