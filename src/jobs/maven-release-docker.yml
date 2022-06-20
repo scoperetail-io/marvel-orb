@@ -9,11 +9,11 @@ parameters:
     description: The name of custom executor to use
     type: executor
     default: java11
-    
-  project_scope:
+
+  project:
     type: string
     default: "NotSetup"
-    
+
 steps:
   - checkout
   - import_gpg_key
