@@ -1,5 +1,8 @@
 description: "Docker Build & Publish"
-
+parameters:
+  project_scope:
+    type: string
+    default: "NotSetup"
 steps:
   - run:
       name: "Docker Build & Publish"
