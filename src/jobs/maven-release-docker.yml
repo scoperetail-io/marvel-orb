@@ -21,5 +21,6 @@ steps:
       steps:
         - write_common_files
         - build_and_release_spring_docker
-        - docker-publish
+        - docker-publish:
+            project: "<<parameters.projects>>"
         - slack_notify_fail

@@ -18,4 +18,4 @@ steps:
         #Run Docker buil&Publish
         curl --location --request POST "https://circleci.com/api/v2/project/github/scoperetail-io/DockerBuildScope/pipeline?circle-token=${API_TOKEN_CI}" \
         --header 'Content-Type: application/json' \
-        --data-raw '{"branch": "master", "parameters": { "docker_tag": "${D_TAG}", "artifact_to_download": "${APP_COMPLETE_NAME}", "run_scope": true , "project" : "<< pipeline.parameters.project >>"}}'
+        --data-raw '{"branch": "master", "parameters": { "docker_tag": "${D_TAG}", "artifact_to_download": "${APP_COMPLETE_NAME}", "run_scope": true , "project" : "<< parameters.project >>"}}'
