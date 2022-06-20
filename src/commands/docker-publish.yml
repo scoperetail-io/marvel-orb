@@ -10,7 +10,7 @@ steps:
         APP_VERSION=$(cat version.txt)
         APP_NAME=$(cat app.txt)
         APP_GROUP=$(cat group.txt)
-        APP_COMPLETE_NAME= "$APP_GROUP:$APP_NAME:APP_VERSION"
+        APP_COMPLETE_NAME="$APP_GROUP:$APP_NAME:$APP_VERSION"
         echo "APP_COMPLETE_NAME = $APP_COMPLETE_NAME"
         D_TAG= "$DOCKER_REGISTRY/$APP_NAME:$APP_VERSION"
         D_TAG_LATEST= "$DOCKER_REGISTRY/$APP_NAME:LATEST"
