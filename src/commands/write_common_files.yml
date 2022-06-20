@@ -3,8 +3,5 @@ description: >
 
 steps:
   - run:
-      name: Writting file DockerFile
-      command: <<include(scripts/writer-dockerfile.sh)>>
-  - run:
       name: Writting file layers.xml
       command: <<include(scripts/writer-layers-xml.sh)>>
