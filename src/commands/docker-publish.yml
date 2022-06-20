@@ -8,8 +8,8 @@ steps:
         APP_GROUP=$(cat group.txt)
         APP_COMPLETE_NAME=$(echo "$APP_GROUP:$APP_NAME:$APP_VERSION")
         echo "APP_COMPLETE_NAME = $APP_COMPLETE_NAME"
-        D_TAG= "$DOCKER_REGISTRY/$APP_NAME:$APP_VERSION"
-        D_TAG_LATEST= "$DOCKER_REGISTRY/$APP_NAME:LATEST"
+        D_TAG="$DOCKER_REGISTRY/$APP_NAME:$APP_VERSION"
+        D_TAG_LATEST="$DOCKER_REGISTRY/$APP_NAME:LATEST"
         echo " DOCKER TAG: $D_TAG, LATEST: $D_TAG_LATEST"
         #Run Docker buil&Publish
         curl --location --request POST "https://circleci.com/api/v2/project/github/scoperetail-io/DockerBuildScope/pipeline?circle-token=${API_TOKEN_CI}" \
