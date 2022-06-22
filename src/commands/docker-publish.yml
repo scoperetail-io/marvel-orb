@@ -1,15 +1,21 @@
 description: "Docker Build & Publish"
+parameters:
+  project:
+    type: string
+    default: "NotSetup"
 steps:
-  - setup_remote_docker:
-      version: 20.10.2
-      docker_layer_caching: true
-
   - run:
       name: "Docker Build & Publish"
       command: |
         APP_VERSION=$(cat version.txt)
         APP_NAME=$(cat app.txt)
-        echo "APP_NAME = $APP_NAME , APP_VERSION = $APP_VERSION"
-        echo $DOCKER_PASS | docker login $DOCKER_REGISTRY -u $DOCKER_USER --password-stdin
-        docker build -f ~/Dockerfile -t $DOCKER_REGISTRY/$APP_NAME:$APP_VERSION .
-        docker push $DOCKER_REGISTRY/$APP_NAME:$APP_VERSION
+        APP_GROUP=$(cat group.txt)
+        APP_COMPLETE_NAME=$(echo "$APP_GROUP:$APP_NAME:$APP_VERSION")
+        echo "APP_COMPLETE_NAME = $APP_COMPLETE_NAME"
+        D_TAG="$DOCKER_REGISTRY/$APP_NAME:$APP_VERSION"
+        D_TAG_LATEST="$DOCKER_REGISTRY/$APP_NAME:LATEST"
+        echo " DOCKER TAG: $D_TAG, LATEST: $D_TAG_LATEST"
+        #Run Docker buil&Publish
+        curl --location --request POST "https://circleci.com/api/v2/project/github/scoperetail-io/DockerBuildScope/pipeline?circle-token=${API_TOKEN_CI}" \
+        --header 'Content-Type: application/json' \
+        --data-raw "{\"branch\": \"master\", \"parameters\": { \"docker_tag\": \"${D_TAG}\", \"artifact_to_download\": \"${APP_COMPLETE_NAME}\", \"run_scope\": true , \"project\" : \"<< parameters.project >>\"}}"

@@ -10,12 +10,17 @@ parameters:
     type: executor
     default: java11
 
+  project:
+    type: string
+    default: "NotSetup"
+
 steps:
   - checkout
   - import_gpg_key
   - with_cache:
       steps:
-        - write_dockerfile_jar
+        - write_common_files
         - build_and_release_spring_docker
-        - docker-publish
+        - docker-publish:
+            project: "<<parameters.project>>"
         - slack_notify_fail
